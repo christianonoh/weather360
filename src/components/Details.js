@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { WiHumidity } from 'react-icons/wi';
 import { RiWindyFill } from 'react-icons/ri';
-import clouds from '../assets/weather.png';
+import clouds from '../assets/cloud.png';
 
 const Details = ({ name, weather, wind }) => (
   <div className="weather-info">
