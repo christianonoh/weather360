@@ -33,6 +33,7 @@ const weatherSlice = createSlice({
     weatherData: null,
     loading: false,
     error: null,
+    searchBarCollapse: false,
   },
   reducers: {
     selectCity: (state, action) => {
@@ -40,7 +41,13 @@ const weatherSlice = createSlice({
         ...state,
         selectedCity: action.payload,
       };
-      // console.log(newState);
+      return newState;
+    },
+    toggleSearchBar: (state) => {
+      const newState = {
+        ...state,
+        searchBarCollapse: !state.searchBarCollapse,
+      };
       return newState;
     },
   },
@@ -76,6 +83,6 @@ const weatherSlice = createSlice({
 });
 
 // Extract the action creators from the slice
-export const { selectCity } = weatherSlice.actions;
+export const { selectCity, toggleSearchBar } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
