@@ -3,7 +3,7 @@ import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { AiFillSetting } from 'react-icons/ai';
-import { selectCity } from '../redux/weather/weatherSlice';
+import { selectCity, toggleSearchBar } from '../redux/weather/weatherSlice';
 import City from '../components/City';
 import SearchBar from '../components/SearchBar';
 import NavBar from '../components/NavBar';
@@ -16,6 +16,7 @@ const HomePage = () => {
 
   const handleCityClick = (city) => {
     dispatch(selectCity(city));
+    if (searchBarCollapse) { dispatch(toggleSearchBar()); }
     navigate(`/details/${city}`);
   };
 

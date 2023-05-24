@@ -48,6 +48,7 @@ const weatherSlice = createSlice({
         ...state,
         searchBarCollapse: !state.searchBarCollapse,
       };
+      console.log(newState.searchBarCollapse);
       return newState;
     },
   },
