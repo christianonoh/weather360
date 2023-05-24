@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBackCircleSharp } from 'react-icons/io5';
-import { selectCity, fetchWeatherData } from '../redux/weather/weatherSlice';
+import { selectCity, fetchWeatherData, toggleSearchBar } from '../redux/weather/weatherSlice';
 import Details from '../components/Details';
 import SearchBar from '../components/SearchBar';
 import NavBar from '../components/NavBar';
@@ -29,8 +29,15 @@ const DetailsPage = () => {
 
   const handleBackClick = () => {
     dispatch(selectCity(null));
+    if (searchBarCollapse) { dispatch(toggleSearchBar()); }
     navigate('/');
   };
+
+  useEffect(() => {
+    if (!loading && !error && weatherData === null) {
+      dispatch(toggleSearchBar());
+    }
+  }, [loading, error, weatherData, dispatch]);
 
   return (
     <>
