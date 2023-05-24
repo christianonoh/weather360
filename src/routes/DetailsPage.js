@@ -1,6 +1,7 @@
 // DetailsPage.js
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { selectCity, fetchWeatherData } from '../redux/weather/weatherSlice';
 import Details from '../components/Details';
 import SearchBar from '../components/SearchBar';
@@ -11,12 +12,12 @@ const DetailsPage = () => {
   const loading = useSelector((state) => state.weather.loading);
   const error = useSelector((state) => state.weather.error);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (selectedCity) {
       dispatch(fetchWeatherData(selectedCity));
     }
-
     // Cleanup function
     return () => {
       dispatch(selectCity(null));
@@ -25,6 +26,7 @@ const DetailsPage = () => {
 
   const handleBackClick = () => {
     dispatch(selectCity(null));
+    navigate('/');
   };
 
   return (
