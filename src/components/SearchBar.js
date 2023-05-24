@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { BsSearch } from 'react-icons/bs';
+import { IoSearch } from 'react-icons/io5';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { selectCity } from '../redux/weather/weatherSlice';
@@ -10,16 +10,17 @@ const SearchBar = () => {
   const navigate = useNavigate();
 
   const handleChange = (event) => setSearchValue(event.target.value);
+
   const handleSubmit = () => {
-    console.log(searchValue);
     dispatch(selectCity(searchValue));
     navigate(`/details/${searchValue}`);
+    setSearchValue('');
   };
   return (
     <div className="search">
       <input type="text" id="search" value={searchValue} placeholder="Enter city name..." onChange={handleChange} />
       <button type="button" onClick={handleSubmit}>
-        <BsSearch />
+        <IoSearch />
       </button>
     </div>
   );
