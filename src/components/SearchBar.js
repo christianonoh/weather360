@@ -16,9 +16,23 @@ const SearchBar = () => {
     navigate(`/details/${searchValue}`);
     setSearchValue('');
   };
+
+  const handleKeyPress = (event) => {
+    if (event.key === 'Enter') {
+      handleSubmit();
+    }
+  };
+
   return (
     <div className="search">
-      <input type="text" id="search" value={searchValue} placeholder="Enter city name..." onChange={handleChange} />
+      <input
+        type="text"
+        id="search"
+        value={searchValue}
+        placeholder="Enter city name..."
+        onChange={handleChange}
+        onKeyPress={handleKeyPress}
+      />
       <button type="button" onClick={handleSubmit}>
         <IoSearch />
       </button>
