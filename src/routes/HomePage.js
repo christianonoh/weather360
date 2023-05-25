@@ -1,4 +1,3 @@
-// HomePage.js
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -7,6 +6,7 @@ import { selectCity, toggleSearchBar } from '../redux/weather/weatherSlice';
 import City from '../components/City';
 import SearchBar from '../components/SearchBar';
 import NavBar from '../components/NavBar';
+import logo from '../assets/logo.png';
 
 const HomePage = () => {
   const cities = useSelector((store) => store.weather.cities);
@@ -21,10 +21,10 @@ const HomePage = () => {
   };
 
   return (
-    <div>
-      <NavBar title="Weather360" featureButton={<AiFillSetting />} />
+    <div className="wrapper">
+      <NavBar title={<img src={logo} id="logo" alt="Logo" />} featureButton={<AiFillSetting />} />
       {searchBarCollapse && (<SearchBar />)}
-      <h2>Cities</h2>
+      <h2 className="city-heading">Popular cities</h2>
       <div className="city-container">
         {cities.map((city) => (
           <City

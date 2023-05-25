@@ -5,15 +5,20 @@ import { RiWindyFill } from 'react-icons/ri';
 import clouds from '../assets/cloud.png';
 
 const Details = ({
-  name, main, wind, weather,
+  name, main, wind, weather, country,
 }) => (
   <div className="weather-info">
+    <h2>
+      {name}
+      ,
+      {' '}
+      {country}
+    </h2>
     <img src={clouds} alt="clouds" />
     <h1>
       {main.temp}
       °C
     </h1>
-    <h2>{name}</h2>
     <h3>{weather[0].main}</h3>
     <div className="details">
       <div className="col">
@@ -58,6 +63,7 @@ Details.propTypes = {
       icon: PropTypes.string.isRequired,
     }),
   ).isRequired,
+  country: PropTypes.string.isRequired,
 };
 
 export default Details;
