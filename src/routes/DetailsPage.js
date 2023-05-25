@@ -1,5 +1,4 @@
-// DetailsPage.js
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { IoChevronBackCircleSharp } from 'react-icons/io5';
@@ -7,6 +6,7 @@ import { selectCity, fetchWeatherData, toggleSearchBar } from '../redux/weather/
 import Details from '../components/Details';
 import SearchBar from '../components/SearchBar';
 import NavBar from '../components/NavBar';
+import logo from '../assets/logo.png';
 
 const DetailsPage = () => {
   const selectedCity = useSelector((state) => state.weather.selectedCity);
@@ -14,6 +14,7 @@ const DetailsPage = () => {
   const loading = useSelector((state) => state.weather.loading);
   const error = useSelector((state) => state.weather.error);
   const searchBarCollapse = useSelector((state) => state.weather.searchBarCollapse);
+  const [firstLoad, setFirstLoad] = useState(true);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -35,16 +36,21 @@ const DetailsPage = () => {
 
   useEffect(() => {
     if (!loading && !error && weatherData === null) {
-      dispatch(toggleSearchBar());
+      console.log('E reach me sha');
+      if (!firstLoad) {
+        console.log('Na me dey run am');
+        dispatch(toggleSearchBar());
+      }
     }
+    setFirstLoad(false);
   }, [loading, error, weatherData, dispatch]);
 
   return (
-    <>
-      <NavBar title="Weather360" featureButton={<button type="button" onClick={handleBackClick}><IoChevronBackCircleSharp alt="&lt; Back" /></button>} />
+    <div className="wrapper">
+      <NavBar title={<img src={logo} id="logo" alt="Logo" />} featureButton={<button type="button" onClick={handleBackClick}><IoChevronBackCircleSharp alt="&lt; Back" /></button>} />
       <section className="details-container">
+        {searchBarCollapse && (<SearchBar />)}
         <div className="weather">
-          {searchBarCollapse && (<SearchBar />)}
           {loading && <h2>Loading...</h2>}
           {error && (
           <h2>
@@ -57,19 +63,19 @@ const DetailsPage = () => {
           )}
           {!loading && !error && weatherData && (
           <>
-            <h1>Weather Details</h1>
             <Details
               key={weatherData.id}
               main={weatherData.main}
               name={weatherData.name}
               wind={weatherData.wind}
               weather={weatherData.weather}
+              country={weatherData.sys.country}
             />
           </>
           )}
         </div>
       </section>
-    </>
+    </div>
   );
 };
 
