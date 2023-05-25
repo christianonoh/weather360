@@ -41,7 +41,7 @@ const DetailsPage = () => {
       }
     }
     setFirstLoad(false);
-  }, [loading, error, weatherData, dispatch]);
+  }, [loading, error, weatherData, firstLoad, dispatch]);
 
   return (
     <div className="wrapper">
