@@ -1,6 +1,5 @@
-// weatherSlice.js
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 // Async thunk action creator
 const apiKey = '5e744b46c6e7c17d533d616cd24a9a77';
@@ -11,11 +10,12 @@ export const fetchWeatherData = createAsyncThunk('weather/fetchWeatherData', asy
     url: `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`,
     headers: {},
   };
-  const response = await axios.request(config);
-  if (response.data) {
+  try {
+    const response = await axios.request(config);
     return response.data;
+  } catch (error) {
+    throw new Error(error);
   }
-  return [];
 });
 
 // Slice
@@ -25,9 +25,14 @@ const weatherSlice = createSlice({
     cities: [
       { id: 1, name: 'New York', country: 'USA' },
       { id: 2, name: 'London', country: 'UK' },
-      { id: 3, name: 'Tokyo', country: 'JP' },
-      { id: 4, name: 'Lagos', country: 'NG' },
-      { id: 5, name: 'Enugu', country: 'NG' },
+      { id: 3, name: 'Tokyo', country: 'Japan' },
+      { id: 4, name: 'Lagos', country: 'Nigeria' },
+      { id: 5, name: 'Enugu', country: 'Nigeria' },
+      { id: 6, name: 'San Jose', country: 'USA' },
+      { id: 7, name: 'Paris', country: 'France' },
+      { id: 8, name: 'Sydney', country: 'Australia' },
+      { id: 9, name: 'Moscow', country: 'Russia' },
+      { id: 10, name: 'Cairo', country: 'Egypt' },
     ],
     selectedCity: null,
     weatherData: null,
@@ -40,6 +45,17 @@ const weatherSlice = createSlice({
       const newState = {
         ...state,
         selectedCity: action.payload,
+      };
+      return newState;
+    },
+    filterCity: (state, action) => {
+      console.log(action.payload);
+      const newState = {
+        ...state,
+        cities:
+        state.cities.filter((e) => e.name.toLowerCase().includes(action.payload.toLowerCase())),
+        loading: false,
+        error: null,
       };
       return newState;
     },
@@ -69,7 +85,6 @@ const weatherSlice = createSlice({
           loading: false,
           error: null,
         };
-        // console.log(newState);
         return newState;
       })
       .addCase(fetchWeatherData.rejected, (state, action) => {
@@ -84,6 +99,6 @@ const weatherSlice = createSlice({
 });
 
 // Extract the action creators from the slice
-export const { selectCity, toggleSearchBar } = weatherSlice.actions;
+export const { selectCity, toggleSearchBar, filterCity } = weatherSlice.actions;
 
 export default weatherSlice.reducer;
