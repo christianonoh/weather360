@@ -36,9 +36,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     if (!loading && !error && weatherData === null) {
-      console.log('E reach me sha');
       if (!firstLoad) {
-        console.log('Na me dey run am');
         dispatch(toggleSearchBar());
       }
     }

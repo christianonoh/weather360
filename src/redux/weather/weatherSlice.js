@@ -48,7 +48,6 @@ const weatherSlice = createSlice({
       return newState;
     },
     filterCity: (state, action) => {
-      console.log(action.payload);
       const newState = {
         ...state,
         cities:
@@ -63,7 +62,6 @@ const weatherSlice = createSlice({
         ...state,
         searchBarCollapse: !state.searchBarCollapse,
       };
-      console.log(newState.searchBarCollapse);
       return newState;
     },
   },
