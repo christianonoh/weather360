@@ -52,7 +52,7 @@ Welcome to **Weather360**, a powerful web application that provides accurate wea
 ### Key Features <a name="key-features"></a>
 
 - **Search:** Enter the name of any city in the search bar to quickly get weather information for that location.
-- **Current Weather:** View the current weather conditions, including temperature, humidity, wind speed, and more.
+- **Current Weather:** View the current weather conditions, including temperature, humidity, wind, speed, and more.
 - **Responsive design:** Enjoy a seamless experience on both desktop and mobile devices.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -63,7 +63,7 @@ Welcome to **Weather360**, a powerful web application that provides accurate wea
 
 - Check out the live demo of Weather360: [Weather360 Demo](https://theweather360.onrender.com/)
 
-- To get a visual overview of Weather360 and its features, watch our video presentation: [Weather360 Video Presentation](https://www.example.com)
+- To get a visual overview of Weather360 and its features, watch our video presentation: [Weather360 Video Presentation](https://www.loom.com/share/d9931e4bfc7b46f5a08a69dab1bf04da)
 
 In the video, we provide a walkthrough of the application, demonstrating how to search for cities, view current weather conditions, and navigate the responsive design on different devices.
 
