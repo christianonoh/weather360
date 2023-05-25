@@ -185,8 +185,6 @@ nav button {
   position: absolute;
   right: 5px;
   background: none;
-  border: none;
-  cursor: pointer;
 }
 
 .search svg { font-size: 2.5rem; }
