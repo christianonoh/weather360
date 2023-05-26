@@ -2,48 +2,77 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { WiHumidity } from 'react-icons/wi';
 import { RiWindyFill } from 'react-icons/ri';
-import clouds from '../assets/cloud.png';
+import clear from '../assets/clear.png';
+import clouds from '../assets/clouds.png';
+import drizzle from '../assets/drizzle.png';
+import dust from '../assets/dust.png';
+import fog from '../assets/fog.png';
+import haze from '../assets/haze.png';
+import mist from '../assets/mist.png';
+import rain from '../assets/rain.png';
+import smoke from '../assets/smoke.png';
+import snow from '../assets/snow.png';
+import thunderstorm from '../assets/thunderstorm.png';
+
+const weatherImages = {
+  clear,
+  clouds,
+  drizzle,
+  dust,
+  fog,
+  haze,
+  mist,
+  rain,
+  smoke,
+  snow,
+  thunderstorm,
+};
 
 const Details = ({
   name, main, wind, weather, country,
-}) => (
-  <div className="weather-info">
-    <h2>
-      {name}
-      ,
-      {' '}
-      {country}
-    </h2>
-    <img src={clouds} alt="clouds" />
-    <h1>
-      {main.temp}
-      °C
-    </h1>
-    <h3>{weather[0].main}</h3>
-    <div className="details">
-      <div className="col">
-        <WiHumidity className="icon icon-humidity" />
-        <div className="humidity">
-          <p>
-            {main.humidity}
-            %
-          </p>
-          <p>Humidity</p>
+}) => {
+  const weatherCondition = weather[0].main.toLowerCase();
+  const weatherImage = weatherImages[weatherCondition];
+
+  return (
+    <div className="weather-info">
+      <h2>
+        {name}
+        ,
+        {' '}
+        {country}
+      </h2>
+      <img src={weatherImage} alt={weatherCondition} />
+      <h1>
+        {main.temp}
+        °C
+      </h1>
+      <h3>{weather[0].description.charAt(0).toUpperCase() + weather[0].description.slice(1)}</h3>
+      <div className="details">
+        <div className="col">
+          <WiHumidity className="icon icon-humidity" />
+          <div className="humidity">
+            <p>
+              {main.humidity}
+              %
+            </p>
+            <p>Humidity</p>
+          </div>
         </div>
-      </div>
-      <div className="col">
-        <RiWindyFill className="icon icon-wind" />
-        <div className="wind">
-          <p>
-            {wind.speed}
-            %
-          </p>
-          <p>Wind</p>
+        <div className="col">
+          <RiWindyFill className="icon icon-wind" />
+          <div className="wind">
+            <p>
+              {wind.speed}
+              %
+            </p>
+            <p>Wind</p>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 Details.propTypes = {
   name: PropTypes.string.isRequired,
