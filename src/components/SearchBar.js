@@ -12,9 +12,11 @@ const SearchBar = () => {
   const handleChange = (event) => setSearchValue(event.target.value);
 
   const handleSubmit = () => {
-    dispatch(selectCity(searchValue));
-    navigate(`/details/${searchValue}`);
-    setSearchValue('');
+    if (searchValue !== '') {
+      dispatch(selectCity(searchValue));
+      navigate(`/details/${searchValue}`);
+      setSearchValue('');
+    }
   };
 
   const handleKeyPress = (event) => {

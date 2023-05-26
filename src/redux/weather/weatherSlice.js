@@ -13,7 +13,11 @@ export const fetchWeatherData = createAsyncThunk('weather/fetchWeatherData', asy
     const response = await axios.request(config);
     return response.data;
   } catch (error) {
-    throw new Error(error);
+    if (error.response) {
+      throw new Error(error.response.data.message);
+    } else {
+      throw new Error('Error occurred while making the request.');
+    }
   }
 });
 
@@ -81,6 +85,7 @@ const weatherSlice = createSlice({
           weatherData: action.payload,
           loading: false,
           error: null,
+          searchBarCollapse: false,
         };
         return newState;
       })
@@ -88,7 +93,7 @@ const weatherSlice = createSlice({
         const newState = {
           ...state,
           loading: false,
-          error: action.payload,
+          error: action.error.message,
         };
         return newState;
       });

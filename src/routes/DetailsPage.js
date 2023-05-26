@@ -36,9 +36,7 @@ const DetailsPage = () => {
 
   useEffect(() => {
     if (!loading && !error && weatherData === null) {
-      if (!firstLoad) {
-        dispatch(toggleSearchBar());
-      }
+      if (!firstLoad) { dispatch(toggleSearchBar()); }
     }
     setFirstLoad(false);
   }, [loading, error, weatherData, firstLoad, dispatch]);
@@ -49,15 +47,16 @@ const DetailsPage = () => {
       <section className="details-container">
         {searchBarCollapse && (<SearchBar />)}
         <div className="weather">
-          {loading && <h2>Loading...</h2>}
+          {loading && <h2 className="message">Loading...</h2>}
           {error && (
-          <h2>
-            Error:
-            {error}
+          <h2 className="message">
+            {error.charAt(0).toUpperCase() + error.slice(1)}
+            <br />
+            Please enter a valid city to view the weather
           </h2>
           )}
           {!loading && !error && weatherData === null && (
-          <h2>Please enter a city to see the weather</h2>
+          <h2 className="message">Please enter a city to view the weather</h2>
           )}
           {!loading && !error && weatherData && (
           <>
