@@ -193,6 +193,35 @@ nav button {
 
 .search svg { font-size: 2.5rem; }
 
+.footer {
+  background-color: rgba(255, 255, 255, 0.5);
+  padding: 10px;
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.footer-text {
+  margin-bottom: 10px;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.footer-icon {
+  font-size: 2.4rem;
+  margin: 0 10px;
+  color: var(--Black);
+}
+
+.footer-icon :hover {
+  color: var(--PaleGreen);
+}
+
 @media screen and (min-width: 768px) {
   h1 { font-size: 3.2rem; }
   h2 { font-size: 2.4rem; }
@@ -248,5 +277,18 @@ nav button {
   .humidity p,
   .wind p {
     font-size: 2.7rem;
+  }
+  .footer { padding: 15px; }
+
+  .footer-text { margin-bottom: 15px; }
+
+  .footer-icon {
+    font-size: 2.4rem;
+    margin: 0 15px;
+    color: var(--Black);
+  }
+
+  .footer-icon :hover {
+    color: var(--PaleGreen);
   }
 }

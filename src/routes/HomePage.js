@@ -7,6 +7,7 @@ import City from '../components/City';
 import SearchBar from '../components/SearchBar';
 import NavBar from '../components/NavBar';
 import logo from '../assets/logo.png';
+import Footer from '../components/Footer';
 
 const HomePage = () => {
   const cities = useSelector((store) => store.weather.cities);
@@ -35,6 +36,7 @@ const HomePage = () => {
           />
         ))}
       </div>
+      <Footer />
     </div>
   );
 };

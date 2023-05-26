@@ -7,6 +7,7 @@ import Details from '../components/Details';
 import SearchBar from '../components/SearchBar';
 import NavBar from '../components/NavBar';
 import logo from '../assets/logo.png';
+import Footer from '../components/Footer';
 
 const DetailsPage = () => {
   const selectedCity = useSelector((state) => state.weather.selectedCity);
@@ -72,6 +73,7 @@ const DetailsPage = () => {
           )}
         </div>
       </section>
+      <Footer />
     </div>
   );
 };
