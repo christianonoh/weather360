@@ -1,0 +1,252 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style: none;
+}
+
+:root {
+  --Black: #001b32;
+  --Grey: #ccc;
+  --PaleGreen: #008e70;
+  --White: #fff;
+  --PaleWhite: #fafafa;
+  --Blue: #0290ff;
+  --DarkBlue: #4386bf;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Poppins', serif;
+  font-style: normal;
+  overflow-x: hidden;
+}
+h1 { font-size: 2.8rem; }
+h2 { font-size: 1.9rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.3rem; }
+h5 { font-size: 1rem; }
+
+.wrapper {
+  background: url('./assets/bg-green.jpg');
+  height: 100vh;
+}
+
+/* NAVBAR  */
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 2.5rem 5vmin;
+  height: 7vmin;
+}
+
+nav svg,
+nav .logo {
+  font-size: 2.5rem;
+}
+
+nav img {
+  display: flex;
+  min-height: 20px;
+  height: 4vmin;
+}
+
+nav button {
+  color: var(--Black);
+  outline: none;
+  border: none;
+  background-color: unset;
+}
+
+/* HOME  */
+.city-heading {
+  color: var(--White);
+  text-align: center;
+  padding: 20px 0 10px 0;
+  font-weight: 300;
+}
+
+.city-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.city {
+  padding: 2rem;
+  background-color: rgba(1, 24, 20, 0.4);
+  color: rgb(243, 235, 232);
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.55);
+  -webkit-box-shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 2px 2px 10px -3px rgba(0, 0, 0, 0.55);
+}
+
+/* DETAILS  */
+.details-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 100%;
+  height: calc(100vh - 20px);
+  background: rgb(0, 27, 50);
+  background: linear-gradient(180deg, rgba(0, 27, 50, 1) 0%, rgba(0, 46, 62, 1) 35%, rgba(0, 150, 117, 1) 100%);
+}
+
+.message {
+  margin-top: 20vh;
+}
+
+.weather {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+
+  /* padding: 0 10vmin; */
+  text-align: center;
+  color: white;
+  border-radius: 10px;
+  margin: 0 auto;
+}
+
+.weather-info h1 {
+  font-size: 6rem;
+  font-weight: 500;
+}
+
+.weather-info h2 {
+  font-size: 2.5rem;
+  font-weight: 300;
+  margin: 50px 0 0 0;
+}
+
+.weather-info img {
+  width: 200px;
+  margin: -40px 0;
+}
+
+.details .icon {
+  font-size: 4rem;
+  margin-right: 1vmin;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.details .col {
+  display: flex;
+  align-items: center;
+  text-align: left;
+}
+
+.humidity p,
+.wind p {
+  font-size: 1.8rem;
+}
+
+/* SEARCH BAR  */
+.search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 15px auto;
+  position: relative;
+  width: 90%;
+}
+
+.search input {
+  border: none;
+  outline: 0;
+  padding: 12px 25px;
+  font-size: 1.8rem;
+  background-color: rgb(222, 237, 243);
+  color: black;
+  border-radius: 30px;
+  flex: 1;
+}
+
+.search button {
+  border: none;
+  outline: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+  background: none;
+}
+
+.search svg { font-size: 2.5rem; }
+
+@media screen and (min-width: 768px) {
+  h1 { font-size: 3.2rem; }
+  h2 { font-size: 2.4rem; }
+  h3 { font-size: 2rem; }
+  h4 { font-size: 1.6rem; }
+  h5 { font-size: 1.3rem; }
+
+  nav {
+    padding: 5vmin 5vmin;
+    height: 7vmin;
+  }
+
+  nav svg,
+  nav .logo {
+    font-size: 3rem;
+  }
+
+  .search {
+    margin: 15px auto;
+    position: relative;
+    width: 70%;
+  }
+  .search svg { font-size: 3rem; }
+
+  .city-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    padding: 0 20px;
+  }
+
+  .weather { width: 70%; }
+
+  .weather-info h1 {
+    font-size: 7rem;
+  }
+
+  .weather-info h2 {
+    font-size: 4rem;
+    font-weight: 400;
+    margin-top: 5vmin;
+  }
+
+  .weather-info img {
+    width: 250px;
+  }
+
+  .details .icon {
+    font-size: 5rem;
+    margin-right: 10px;
+  }
+
+  .humidity p,
+  .wind p {
+    font-size: 2.7rem;
+  }
+}
